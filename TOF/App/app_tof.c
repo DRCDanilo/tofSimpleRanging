@@ -169,6 +169,7 @@ static void MX_53L5A1_SimpleRanging_Process(void)
   }
 }
 
+//Function to print the results
 static void print_result(RANGING_SENSOR_Result_t *Result)
 {
   int8_t i;
