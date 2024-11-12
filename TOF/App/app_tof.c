@@ -183,10 +183,10 @@ static void print_result(RANGING_SENSOR_Result_t *Result)
 
   display_commands_banner();
 
-  printf("Cell Format :\n\n");
+  //printf("Cell Format :\n\n");
   for (l = 0; l < RANGING_SENSOR_NB_TARGET_PER_ZONE; l++)
   {
-    printf(" \033[38;5;10m%20s\033[0m : %20s\n", "Distance [mm]", "Status");
+    //printf(" \033[38;5;10m%20s\033[0m : %20s\n", "Distance [mm]", "Status");
     if ((Profile.EnableAmbient != 0) || (Profile.EnableSignal != 0))
     {
       printf(" %20s : %20s\n", "Signal [kcps/spad]", "Ambient [kcps/spad]");
@@ -310,14 +310,14 @@ static void display_commands_banner(void)
   /* clear screen */
   printf("%c[2H", 27);
 
-  printf("53L5A1 Simple Ranging demo application\n");
+  /*printf("53L5A1 Simple Ranging demo application\n");
   printf("--------------------------------------\n\n");
 
   printf("Use the following keys to control application\n");
   printf(" 'r' : change resolution\n");
   printf(" 's' : enable signal and ambient\n");
-  printf(" 'c' : clear screen\n");
-  printf("\n");
+  printf(" 'c' : clear screen\n");*/
+  //printf("\n");
 }
 
 static void handle_cmd(uint8_t cmd)
