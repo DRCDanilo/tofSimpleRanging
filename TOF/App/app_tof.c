@@ -177,6 +177,8 @@ static void print_result(RANGING_SENSOR_Result_t *Result)
   int8_t k;
   int8_t l;
   uint8_t zones_per_line;
+  //variable to save the distance data
+  long int ourDistance[16];
 
   zones_per_line = ((Profile.RangingProfile == RS_PROFILE_8x8_AUTONOMOUS) ||
                     (Profile.RangingProfile == RS_PROFILE_8x8_CONTINUOUS)) ? 8 : 4;
@@ -257,6 +259,9 @@ static void print_result(RANGING_SENSOR_Result_t *Result)
     printf(" -----------------");
   }
   printf("\n");
+  //Code to show the distance data:
+  printf("\n");
+
 }
 
 static void toggle_resolution(void)
