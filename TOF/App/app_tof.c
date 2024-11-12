@@ -179,6 +179,8 @@ static void print_result(RANGING_SENSOR_Result_t *Result)
   uint8_t zones_per_line;
   //variable to save the distance data
   long int ourDistance[16];
+  //variable to iterate over ourDistance array
+  int oDCount = 0;
 
   zones_per_line = ((Profile.RangingProfile == RS_PROFILE_8x8_AUTONOMOUS) ||
                     (Profile.RangingProfile == RS_PROFILE_8x8_CONTINUOUS)) ? 8 : 4;
@@ -216,12 +218,19 @@ static void print_result(RANGING_SENSOR_Result_t *Result)
       /* Print distance and status */
       for (k = (zones_per_line - 1); k >= 0; k--)
       {
-        if (Result->ZoneResult[j + k].NumberOfTargets > 0)
-          printf("| \033[38;5;10m%5ld\033[0m  :  %5ld ",
+        if (Result->ZoneResult[j + k].NumberOfTargets > 0){
+
+        	printf("| \033[38;5;10m%5ld\033[0m  :  %5ld ",(long)Result->ZoneResult[j + k].Distance[l],(long)Result->ZoneResult[j + k].Status[l]);
+        	ourDistance[oDCount] = (long)Result->ZoneResult[j + k].Distance[l];
+        	oDCount ++;
+        }
+          /*printf("| \033[38;5;10m%5ld\033[0m  :  %5ld ",
                  (long)Result->ZoneResult[j + k].Distance[l],
-                 (long)Result->ZoneResult[j + k].Status[l]);
-        else
-          printf("| %5s  :  %5s ", "X", "X");
+                 (long)Result->ZoneResult[j + k].Status[l]);*/
+        else{
+        	printf("| %5s  :  %5s ", "X", "X");
+        }
+          //printf("| %5s  :  %5s ", "X", "X");
       }
       printf("|\n");
 
@@ -261,6 +270,10 @@ static void print_result(RANGING_SENSOR_Result_t *Result)
   printf("\n");
   //Code to show the distance data:
   printf("\n");
+  //Show the ourDistance array
+  for (k = 15; k >= 0; k--){
+	  printf(" %5ld ", ourDistance[k]);
+  }
 
 }
 
