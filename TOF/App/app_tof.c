@@ -181,6 +181,8 @@ static void print_result(RANGING_SENSOR_Result_t *Result)
   long int ourDistance[16];
   //variable to iterate over ourDistance array
   int oDCount = 0;
+  //variable to use in the for cycle to show ourDistance array
+  int r;
 
   zones_per_line = ((Profile.RangingProfile == RS_PROFILE_8x8_AUTONOMOUS) ||
                     (Profile.RangingProfile == RS_PROFILE_8x8_CONTINUOUS)) ? 8 : 4;
@@ -271,8 +273,8 @@ static void print_result(RANGING_SENSOR_Result_t *Result)
   //Code to show the distance data:
   printf("\n");
   //Show the ourDistance array
-  for (k = 15; k >= 0; k--){
-	  printf(" %5ld ", ourDistance[k]);
+  for (r = 0; r <= 15; r++){
+	  printf(" %5ld ", ourDistance[r]);
   }
 
 }
